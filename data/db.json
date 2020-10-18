@@ -1,0 +1,19 @@
+{
+  "categories": [
+    {
+      "name": "Toys and games",
+      "display_name": "toys",
+      "description": "toys for children",
+      "_id": 1
+    }
+  ],
+  "products": [
+    {
+      "category": "board games",
+      "name": "monopoly",
+      "display_name": "board game",
+      "description": "board game",
+      "_id": 1
+    }
+  ]
+}
