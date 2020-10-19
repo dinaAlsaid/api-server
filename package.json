@@ -10,7 +10,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "jest --coverage --verbose",
-    "lint": "eslint '**/*.js' --fix"
+    "lint": "eslint '**/*.js'"
   },
   "repository": {
     "type": "git",
