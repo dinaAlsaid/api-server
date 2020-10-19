@@ -16,6 +16,8 @@
 #### How to initialize/run your application
 
 - `json-server --id=_id --watch ./data/db.json`
+- start: `node index.js`
+- test: `jest --coverage --verbose`
 
 #### How to use your library (where applicable)
 
