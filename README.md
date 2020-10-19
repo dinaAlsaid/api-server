@@ -1,6 +1,6 @@
-# LAB - Class 06:HTTP and REST
+# LAB - Class 07:Express
 
-## Project: api-server
+## Project: api-server Phase:2
 
 ### Author: Dina Alsaid
 
@@ -10,7 +10,8 @@
 
 ### Setup
 
-- packages:(json-server)
+- .env variables
+`PORT=3000`
 
 #### How to initialize/run your application
 
