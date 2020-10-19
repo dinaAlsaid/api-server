@@ -1,0 +1,35 @@
+{
+  "name": "api-server",
+  "version": "1.0.0",
+  "description": "## Project: api-server",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --coverage --verbose",
+    "lint": "eslint '**/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dinaAlsaid/api-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dinaAlsaid/api-server/issues"
+  },
+  "homepage": "https://github.com/dinaAlsaid/api-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.0",
+    "supertest": "^5.0.0"
+  }
+}
