@@ -1,6 +1,6 @@
-# LAB - Class 07:Express
+# LAB - Class 08:Routing
 
-## Project: api-server Phase:2
+## Project: api-server Phase:3
 
 ### Author: Dina Alsaid
 
@@ -12,6 +12,7 @@
 
 - .env variables
 `PORT=3000`
+`MONGODB_URI=mongodb://localhost:27017/store`
 
 #### How to initialize/run your application
 
@@ -25,4 +26,4 @@
 
 #### UML
 
-Link to an image of the UML for your application and response to events
+![UML](./uml.png)
