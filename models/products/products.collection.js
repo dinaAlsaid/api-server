@@ -6,7 +6,7 @@ class ProCollection {
     this.ProModel = schema;
   }
   read(_id) {
-    //if id exist find by id if not find all 
+    //if id exist find by id if not find all
     let id = _id ? { _id } : {};
     return this.ProModel.find(id);
   }
@@ -22,4 +22,4 @@ class ProCollection {
   }
 }
 
-module.exports= new ProCollection();
+module.exports = new ProCollection();
