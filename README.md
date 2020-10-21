@@ -1,6 +1,6 @@
-# LAB - Class 08:Routing
+# LAB - Class 09:Modularity
 
-## Project: api-server Phase:3
+## Project: api-server Phase:4
 
 ### Author: Dina Alsaid
 
@@ -26,4 +26,4 @@
 
 #### UML
 
-![UML](./uml.png)
+![UML](./uml2.png)

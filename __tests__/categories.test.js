@@ -4,6 +4,8 @@ const server = require('../lib/server.js');
 const supergoose = require('@code-fellows/supergoose');
 const mockRequest = supergoose(server.server);
 
+// tests are still valid here after creating the api router with dynamic routes
+
 describe('categories', () => {
   let category = {
     name: 'monopoly',
@@ -17,7 +19,7 @@ describe('categories', () => {
     description: 'board game',
   };
 
-  it('Can post a new category record', async () => {
+ it('Can post a new category record', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)

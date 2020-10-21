@@ -4,6 +4,8 @@ const server = require('../lib/server.js');
 const supergoose = require('@code-fellows/supergoose');
 const mockRequest = supergoose(server.server);
 
+// tests are still valid here after creating the api router with dynamic routes
+
 describe('Products', () => {
   let product = {
     category: 'board',
