@@ -4,6 +4,8 @@ const server = require('../lib/server.js');
 const supergoose = require('@code-fellows/supergoose');
 const mockRequest = supergoose(server.server);
 
+// tests are still valid here after creating the api router with dynamic routes
+
 describe('categories', () => {
   let category = {
     name: 'monopoly',
@@ -36,9 +38,7 @@ describe('categories', () => {
       .then((data) => {
         return mockRequest.get('/api/v1/categories').then((record) => {
           Object.keys(category).forEach((key) => {
-            expect(record.body[record.body.length - 1][key]).toEqual(
-              category[key]
-            );
+            expect(record.body[record.body.length - 1][key]).toEqual(category[key]);
           });
           expect(data.status).toEqual(200);
         });

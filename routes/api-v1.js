@@ -2,22 +2,23 @@
 
 const express = require('express');
 const router = express.Router();
-const productModel = require('../models/products/products.collection.js');
+const modelFinder = require('../lib/middleware/model-finder.js');
 
-router.post('/', postProduct);
-router.get('/', getProducts);
-router.get('/:id', getProductById);
-router.put('/:id', updateProduct);
-router.delete('/:id', deleteProduct);
+router.param('model', modelFinder);
 
-//callback functions
+router.post('/:model', postHandler);
+router.get('/:model', getAllHandler);
+router.get('/:model/:id', getByIdHandler);
+router.put('/:model/:id', updateHandler);
+router.delete('/:model/:id', deleteHandler);
 
 /** Adds a new record to the product collection **/
-function postProduct(req, res) {
+function postHandler(req, res) {
+  // it's not going to take the ctegory anyway for the category model
   let { category, name, display_name, description } = req.body;
   let record = { category, name, display_name, description };
 
-  productModel
+  req.model
     .create(record)
     .then((rec) => {
       res.status(200).json(rec);
@@ -26,10 +27,10 @@ function postProduct(req, res) {
       console.error(err.message);
     });
 }
-/** retrieves records from the product collection **/
 
-function getProducts(req, res) {
-  productModel
+/** retrieves records from the product collection **/
+function getAllHandler(req, res) {
+  req.model
     .read(null)
     .then((data) => {
       res.status(200).json(data);
@@ -37,28 +38,12 @@ function getProducts(req, res) {
     .catch((err) => {
       console.error(err.message);
     });
-
-  // if (req.query.category) {
-  //   let query = { category: req.query.category };
-  //   productModel
-  //     .read(query)
-  //     .then((data) => {
-  //       res.status(200).json(data);
-  //     })
-
-  // } else {
-  //   productModel
-  //     .read(null)
-  //     .then((data) => {
-  //       res.status(200).json(data);
-  //     })
-  // }
 }
 
 /** retrieves one record from the product collection **/
-function getProductById(req, res) {
+function getByIdHandler(req, res) {
   let _id = req.params.id;
-  productModel
+  req.model
     .read(_id)
     .then((data) => {
       res.status(200).json(data);
@@ -69,12 +54,13 @@ function getProductById(req, res) {
 }
 
 /** updates an existing record in the product collection **/
-function updateProduct(req, res) {
+function updateHandler(req, res) {
+  // also not mapping the category so it is fine like this
   let { category, name, display_name, description } = req.body;
   let id = req.params.id;
   let record = { category, name, display_name, description, id };
 
-  productModel
+  req.model
     .update(id, record)
     .then((rec) => {
       res.status(200).json(rec);
@@ -85,9 +71,9 @@ function updateProduct(req, res) {
 }
 
 /** deletes an existing record to the product collection **/
-function deleteProduct(req, res) {
+function deleteHandler(req, res) {
   let id = req.params.id;
-  productModel
+  req.model
     .delete(id)
     .then((data) => {
       res.status(200).json({ data });
