@@ -1,6 +1,6 @@
 'use strict';
 const schema = require('./products-schema.js');
-const Collection = require('../mongo.js')
+const Collection = require('../mongo.js');
 
 class ProCollection extends Collection {
   constructor() {

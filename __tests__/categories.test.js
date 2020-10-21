@@ -19,7 +19,7 @@ describe('categories', () => {
     description: 'board game',
   };
 
- it('Can post a new category record', async () => {
+  it('Can post a new category record', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
@@ -38,9 +38,7 @@ describe('categories', () => {
       .then((data) => {
         return mockRequest.get('/api/v1/categories').then((record) => {
           Object.keys(category).forEach((key) => {
-            expect(record.body[record.body.length - 1][key]).toEqual(
-              category[key]
-            );
+            expect(record.body[record.body.length - 1][key]).toEqual(category[key]);
           });
           expect(data.status).toEqual(200);
         });
