@@ -26,12 +26,5 @@
 
 #### UML
 
-<<<<<<< HEAD
-![class 07 uml](./class07.png)
-=======
-
 ![class 06 uml](./class6.png)
 ![class 07 uml](./class07.png)
-![class 09 uml](./uml2.png)
-
->>>>>>> c3227b3bc5b44b4ba451c8002feae7db5f583408
