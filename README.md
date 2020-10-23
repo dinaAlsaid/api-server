@@ -1,6 +1,6 @@
-# LAB - Class 06:HTTP and REST
+# LAB - Class 09:Modularity
 
-## Project: api-server
+## Project: api-server Phase:4
 
 ### Author: Dina Alsaid
 
@@ -10,11 +10,15 @@
 
 ### Setup
 
-- packages:(json-server)
+- .env variables
+`PORT=3000`
+`MONGODB_URI=mongodb://localhost:27017/store`
 
 #### How to initialize/run your application
 
 - `json-server --id=_id --watch ./data/db.json`
+- start: `node index.js`
+- test: `jest --coverage --verbose`
 
 #### How to use your library (where applicable)
 
@@ -23,3 +27,4 @@
 #### UML
 
 ![class 06 uml](./class6.png)
+![class 09 uml](./uml2.png)
