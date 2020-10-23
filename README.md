@@ -1,6 +1,6 @@
-# LAB - Class 07:Express
+# LAB - Class 09:Modularity
 
-## Project: api-server Phase:2
+## Project: api-server Phase:4
 
 ### Author: Dina Alsaid
 
@@ -12,6 +12,7 @@
 
 - .env variables
 `PORT=3000`
+`MONGODB_URI=mongodb://localhost:27017/store`
 
 #### How to initialize/run your application
 
@@ -25,4 +26,12 @@
 
 #### UML
 
+<<<<<<< HEAD
 ![class 07 uml](./class07.png)
+=======
+
+![class 06 uml](./class6.png)
+![class 07 uml](./class07.png)
+![class 09 uml](./uml2.png)
+
+>>>>>>> c3227b3bc5b44b4ba451c8002feae7db5f583408
