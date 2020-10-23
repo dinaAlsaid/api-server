@@ -1,6 +1,6 @@
-# LAB - Class 09:Modularity
+# LAB - Class 07:Express
 
-## Project: api-server Phase:4
+## Project: api-server Phase:2
 
 ### Author: Dina Alsaid
 
@@ -12,7 +12,6 @@
 
 - .env variables
 `PORT=3000`
-`MONGODB_URI=mongodb://localhost:27017/store`
 
 #### How to initialize/run your application
 
