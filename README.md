@@ -26,4 +26,5 @@
 
 #### UML
 
-![UML](./uml2.png)
+![class 06 uml](./class6.png)
+![class 09 uml](./uml2.png)
