@@ -61,7 +61,7 @@ describe('Products', () => {
       });
   });
 
-  it('Can update a product record by id', async () => {
+  it('Can update a product record by id using put', async () => {
     await mockRequest
       .post('/api/v1/products')
       .send(product)
@@ -76,6 +76,31 @@ describe('Products', () => {
             expect(data.status).toEqual(200);
           });
       });
+  });
+  it('Can update a product record by id using patch', async () => {
+    let patchingpart = {
+      name: 'patch method',
+    };
+    let updated={
+      category: 'board',
+      name: 'patch method',
+      display_name: 'board game',
+      description: 'board game',
+    }
+    await mockRequest
+    .post('/api/v1/products')
+    .send(product)
+    .then((data) => {
+      return mockRequest
+        .patch(`/api/v1/products/${data.body._id}`)
+        .send(patchingpart)
+        .then((record) => {
+          Object.keys(updated).forEach((key) => {
+            expect(record.body[key]).toEqual(updated[key]);
+          });
+          expect(data.status).toEqual(200);
+        });
+    });
   });
 
   it('Can delete a product record by id', async () => {

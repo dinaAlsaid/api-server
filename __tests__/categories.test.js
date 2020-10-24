@@ -17,7 +17,7 @@ describe('categories', () => {
     description: 'board game',
   };
 
-  it('Can post a new category record', async () => {
+  xit('Can post a new category record', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
@@ -29,7 +29,7 @@ describe('categories', () => {
         expect(data.status).toEqual(200);
       });
   });
-  it('Can get all category records', async () => {
+  xit('Can get all category records', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
@@ -43,7 +43,7 @@ describe('categories', () => {
       });
   });
 
-  it('Can get a category record by id', async () => {
+  xit('Can get a category record by id', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
@@ -59,7 +59,7 @@ describe('categories', () => {
       });
   });
 
-  it('Can update a category record by id', async () => {
+  xit('Can update a category record by id', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
@@ -75,8 +75,32 @@ describe('categories', () => {
           });
       });
   });
+  it('Can update a category record by id using patch', async () => {
+    let patchingpart = {
+      name: 'patch method',
+    };
+    let updated={
+      name: 'patch method',
+      display_name: 'board game',
+      description: 'board game',
+    }
+    await mockRequest
+    .post('/api/v1/categories')
+    .send(category)
+    .then((data) => {
+      return mockRequest
+        .patch(`/api/v1/categories/${data.body._id}`)
+        .send(patchingpart)
+        .then((record) => {
+          Object.keys(updated).forEach((key) => {
+            expect(record.body[key]).toEqual(updated[key]);
+          });
+          expect(data.status).toEqual(200);
+        });
+    });
+  });
 
-  it('Can delete a category record by id', async () => {
+  xit('Can delete a category record by id', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
