@@ -81,29 +81,36 @@ describe('Products', () => {
     let patchingpart = {
       name: 'patch method',
     };
-    let updated={
+    let updated = {
       category: 'board',
       name: 'patch method',
       display_name: 'board game',
       description: 'board game',
-    }
+    };
     await mockRequest
-    .post('/api/v1/products')
-    .send(product)
-    .then((data) => {
-      return mockRequest
-        .patch(`/api/v1/products/${data.body._id}`)
-        .send(patchingpart)
-        .then((record) => {
-          Object.keys(updated).forEach((key) => {
-            expect(record.body[key]).toEqual(updated[key]);
+      .post('/api/v1/products')
+      .send(newProduct)
+      .then((data) => {
+        return mockRequest
+          .patch(`/api/v1/products/${data.body._id}`)
+          .send(patchingpart)
+          .then((record) => {
+            Object.keys(updated).forEach((key) => {
+              expect(record.body[key]).toEqual(updated[key]);
+            });
+            expect(data.status).toEqual(200);
           });
-          expect(data.status).toEqual(200);
-        });
-    });
+      });
   });
 
   it('Can delete a product record by id', async () => {
+    let updated = {
+      category: 'board',
+      name: 'patch method',
+      display_name: 'board game',
+      description: 'board game',
+    };
+
     await mockRequest
       .post('/api/v1/products')
       .send(product)
@@ -111,12 +118,11 @@ describe('Products', () => {
         return mockRequest
           .delete(`/api/v1/products/${data.body._id}`)
           .then((record) => {
-            Object.keys(newProduct).forEach((key) => {
-              expect(record.body.data[key]).toEqual(newProduct[key]);
+            Object.keys(updated).forEach((key) => {
+              expect(record.body.data[key]).toEqual(updated[key]);
             });
             expect(record.status).toEqual(200);
           });
       });
   });
 });
-

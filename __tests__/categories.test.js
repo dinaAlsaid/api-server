@@ -17,7 +17,7 @@ describe('categories', () => {
     description: 'board game',
   };
 
-  xit('Can post a new category record', async () => {
+  it('Can post a new category record', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
@@ -29,7 +29,7 @@ describe('categories', () => {
         expect(data.status).toEqual(200);
       });
   });
-  xit('Can get all category records', async () => {
+  it('Can get all category records', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
@@ -43,7 +43,7 @@ describe('categories', () => {
       });
   });
 
-  xit('Can get a category record by id', async () => {
+  it('Can get a category record by id', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
@@ -59,7 +59,7 @@ describe('categories', () => {
       });
   });
 
-  xit('Can update a category record by id', async () => {
+  it('Can update a category record by id', async () => {
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
@@ -79,28 +79,34 @@ describe('categories', () => {
     let patchingpart = {
       name: 'patch method',
     };
-    let updated={
+    let updated = {
       name: 'patch method',
       display_name: 'board game',
       description: 'board game',
-    }
+    };
     await mockRequest
-    .post('/api/v1/categories')
-    .send(category)
-    .then((data) => {
-      return mockRequest
-        .patch(`/api/v1/categories/${data.body._id}`)
-        .send(patchingpart)
-        .then((record) => {
-          Object.keys(updated).forEach((key) => {
-            expect(record.body[key]).toEqual(updated[key]);
+      .post('/api/v1/categories')
+      .send(newcategory)
+      .then((data) => {
+        return mockRequest
+          .patch(`/api/v1/categories/${data.body._id}`)
+          .send(patchingpart)
+          .then((record) => {
+            Object.keys(updated).forEach((key) => {
+              expect(record.body[key]).toEqual(updated[key]);
+            });
+            expect(data.status).toEqual(200);
           });
-          expect(data.status).toEqual(200);
-        });
-    });
+      });
   });
 
-  xit('Can delete a category record by id', async () => {
+  it('Can delete a category record by id', async () => {
+    let updated = {
+      name: 'patch method',
+      display_name: 'board game',
+      description: 'board game',
+    };
+
     await mockRequest
       .post('/api/v1/categories')
       .send(category)
@@ -108,8 +114,8 @@ describe('categories', () => {
         return mockRequest
           .delete(`/api/v1/categories/${data.body._id}`)
           .then((record) => {
-            Object.keys(newcategory).forEach((key) => {
-              expect(record.body.data[key]).toEqual(newcategory[key]);
+            Object.keys(updated).forEach((key) => {
+              expect(record.body.data[key]).toEqual(updated[key]);
             });
             expect(record.status).toEqual(200);
           });
