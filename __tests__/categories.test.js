@@ -36,9 +36,7 @@ describe('categories', () => {
       .then((data) => {
         return mockRequest.get('/api/v1/categories').then((record) => {
           Object.keys(category).forEach((key) => {
-            expect(record.body[record.body.length - 1][key]).toEqual(
-              category[key]
-            );
+            expect(record.body[record.body.length - 1][key]).toEqual(category[key]);
           });
           expect(data.status).toEqual(200);
         });

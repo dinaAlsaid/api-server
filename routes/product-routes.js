@@ -8,6 +8,7 @@ router.post('/', postProduct);
 router.get('/', getProducts);
 router.get('/:id', getProductById);
 router.put('/:id', updateProduct);
+router.patch('/:id', patchProduct);
 router.delete('/:id', deleteProduct);
 
 //callback functions
@@ -38,21 +39,6 @@ function getProducts(req, res) {
       console.error(err.message);
     });
 
-  // if (req.query.category) {
-  //   let query = { category: req.query.category };
-  //   productModel
-  //     .read(query)
-  //     .then((data) => {
-  //       res.status(200).json(data);
-  //     })
-
-  // } else {
-  //   productModel
-  //     .read(null)
-  //     .then((data) => {
-  //       res.status(200).json(data);
-  //     })
-  // }
 }
 
 /** retrieves one record from the product collection **/
@@ -82,6 +68,21 @@ function updateProduct(req, res) {
     .catch((err) => {
       console.error(err.message);
     });
+}
+
+/** updates an existing record in the product collection **/
+function patchProduct(req, res) {
+  let id = req.params.id;
+  let record = {};
+
+  Object.keys(req.body).forEach((key) => {
+    record[key] = req.body[key];
+  });
+
+  productModel.update(id,record).then((rec)=>{
+    res.status(200).json(rec);
+
+  });
 }
 
 /** deletes an existing record to the product collection **/

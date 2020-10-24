@@ -38,9 +38,7 @@ describe('Products', () => {
       .then((data) => {
         return mockRequest.get('/api/v1/products').then((record) => {
           Object.keys(product).forEach((key) => {
-            expect(record.body[record.body.length - 1][key]).toEqual(
-              product[key]
-            );
+            expect(record.body[record.body.length - 1][key]).toEqual(product[key]);
           });
           expect(data.status).toEqual(200);
         });

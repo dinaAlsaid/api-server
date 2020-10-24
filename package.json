@@ -27,7 +27,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.10.9"
+    "mongoose": "^5.10.10"
   },
   "devDependencies": {
     "@code-fellows/supergoose": "^1.0.11",
