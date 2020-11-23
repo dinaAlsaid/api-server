@@ -15,8 +15,15 @@ router.delete('/:model/:id', deleteHandler);
 /** Adds a new record to the product collection **/
 function postHandler(req, res) {
   // it's not going to take the ctegory anyway for the category model
-  let { category, name, display_name, description } = req.body;
-  let record = { category, name, display_name, description };
+  let record;
+  if (req.params.model === 'todo') {
+    let { text, rating, assignee, complete } = req.body;
+    record = { text, rating, assignee, complete };
+
+  } else {
+    let { category, name, display_name, description } = req.body;
+    record = { category, name, display_name, description };
+  }
 
   req.model
     .create(record)
@@ -56,10 +63,16 @@ function getByIdHandler(req, res) {
 /** updates an existing record in the product collection **/
 function updateHandler(req, res) {
   // also not mapping the category so it is fine like this
-  let { category, name, display_name, description } = req.body;
+  let record;
   let id = req.params.id;
-  let record = { category, name, display_name, description, id };
+  if (req.params.model === 'todo') {
+    let { text, rating, assignee, complete } = req.body;
+    record = { text, rating, assignee, complete, id };
 
+  } else {
+    let { category, name, display_name, description } = req.body;
+    record = { category, name, display_name, description, id };
+  }
   req.model
     .update(id, record)
     .then((rec) => {
